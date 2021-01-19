@@ -1,14 +1,69 @@
+/* 폰트 추가 */
+@font-face{
+    font-family: Audiowide;
+    src:url('fonts/Audiowide-Regular.ttf') format('truetype');
+    font-weight: normal; 
+    font-style: normal;
+}
+
 * {
-    font-family: Arial, Verdana, sans-serif;
+    font-family: Arial, Verdana, sans-serif, Audiowide;
     color: #665544;
     text-align: center;
 }
 
-nav, #feature, .article, footer {
+#time {
+    text-align: right;
+}
+
+#logo {
+    background-color:blue;
+    background-image: url('img/header.jpg');
+    background-size: contain;
+    height:160px;
+}
+
+#logo h1{
+    font-size: 40px;
+    font-family: GungsuhChe, cursive;
+    padding: 1.5em 0px 0px 0px;
+    margin: 0px;
+    color: black;
+}
+
+#logo h2{
+    font-size: 20px;
+    font-family: Arial;
+    color: black;
+    padding: 10px;
+    margin: 0px
+}
+
+nav{
+    background-color: #efefef;
+    margin-top: 10px;
+    padding: auto;
+    border: 1px;
+    border-style: solid none;
+    border-color: black;
+    font-size: 1.5em;
+}
+
+nav a{
+    text-decoration: none;
+    color: black;
+    font-style: normal;
+}
+
+nav a:hover{
+    color: red;
+}
+
+#feature, .article, footer {
     background-color: #efefef;
     margin-top: 20px;
-    padding: 10px 0px 5px 0px;
 }
+
 
 #feature, .article {
     height: 100px;
