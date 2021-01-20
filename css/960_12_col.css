@@ -332,7 +332,7 @@ body {
 .container_12:before,
 .container_12:after {
   content: '.';
-  display: block;
+  display: block; 
   overflow: hidden;
   visibility: hidden;
   font-size: 0;

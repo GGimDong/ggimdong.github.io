@@ -1,7 +1,8 @@
 /* 폰트 추가 */
 @font-face{
     font-family: Audiowide;
-    src:url('fonts/Audiowide-Regular.ttf') format('truetype');
+    src: url('fonts/Audiowide-Regular.ttf') format('truetype'),
+        url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap') format('truetype');
     font-weight: normal; 
     font-style: normal;
 }
@@ -42,7 +43,6 @@
 nav{
     background-color: #efefef;
     margin-top: 10px;
-    padding: auto;
     border: 1px;
     border-style: solid none;
     border-color: black;
@@ -50,17 +50,26 @@ nav{
 }
 
 nav a{
+    font-size: 1em;
+    padding: 0px 0.8em;
+    font-family: Audiowide;
     text-decoration: none;
     color: black;
-    font-style: normal;
 }
 
-nav a:hover{
+#current, nav a:hover{
     color: red;
 }
 
 footer{
-    background-color: black;
+    background-color: black !important;
+}
+
+footer p{
+    color: white;
+    font-size: 1.2em;
+    padding-top: 40px;
+    padding-bottom: 40px;
 }
 
 #feature, .article, footer {
