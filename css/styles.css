@@ -6,6 +6,13 @@
     font-weight: normal; 
     font-style: normal;
 }
+/*
+@font-face{
+    font-family: GS;
+    src: url('') format('truetype');
+    font-weight: normal; 
+    font-style: normal;
+}*/
 
 * {
     font-family: Arial, Verdana, sans-serif, Audiowide;
@@ -17,6 +24,8 @@
     text-align: right;
 }
 
+/* 상단 */
+
 #logo {
     background-color:blue;
     background-image: url('img/header.jpg');
@@ -26,7 +35,7 @@
 
 #logo h1{
     font-size: 40px;
-    font-family: GungsuhChe, Audiowide, cursive;
+    font-family: Audiowide, GungsuhChe, cursive;
     padding: 1.5em 0px 0px 0px;
     margin: 0px;
     color: black;
@@ -39,6 +48,8 @@
     padding: 10px;
     margin: 0px
 }
+
+/* nav 바 */
 
 nav{
     background-color: #efefef;
@@ -61,7 +72,10 @@ nav a{
     color: red;
 }
 
+/* 하단바 */
+
 footer{
+    margin-top:20px;
     background-color: black !important;
 }
 
@@ -72,17 +86,68 @@ footer p{
     padding-bottom: 40px;
 }
 
-#feature, .article, footer {
-    background-color: #efefef;
-    margin-top: 20px;
+#my_pic img{
+    border-radius:70%;
+    overflow: hidden;
 }
 
+/***  화살표  ***/
+/*
+.left_arrow{
+    background-image: url('img/arrow_left.png');
+}
 
-#feature, .article {
+.right_arrow{
+    background-image: url('img/arrow_right.png');
+}
+
+.left_arrow, .right_arrow{
+    margin-top: 20px;
+    background-color: #f8f9fa;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 480px;
+}
+
+.left_arrow:hover, .right_arrow:hover {
+    opacity: 0.8;
+}
+*/
+/*cat_slide*/
+
+.cat_slide{
+    background-color: #efefef;
+    margin-top:20px;
+    height: 480px;
+}
+
+.cat_slide img{
+    height: 480px;
+}
+
+.cat_slide img:hover{
+    opacity: 0.8;
+}
+
+/** 글 상자 **/
+
+.article {
+    text-align: left;
     height: 300px;
+    background-color:#efefef;
+    margin-top:20px;
+}
+
+.article p{
+    padding: 10px 10px;
 }
 
 li {
     display: inline;
     padding: 5px;
+}
+
+img{
+    height: 300px;
 }
