@@ -2,17 +2,25 @@
 @font-face{
     font-family: Audiowide;
     src: url('fonts/Audiowide-Regular.ttf') format('truetype'),
-        url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap') format('truetype');
+        url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
     font-weight: normal; 
     font-style: normal;
 }
-/*
+
 @font-face{
-    font-family: GS;
-    src: url('') format('truetype');
+    font-family: NanumBrushScript;
+    src: url('fonts/NanumBrushScript-Regular.ttf') format('truetype'),
+    url('https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap');
     font-weight: normal; 
     font-style: normal;
-}*/
+}
+
+@font-face{
+    font-family: GSC;
+    src: url('fonts/ChosunCentennial_ttf.ttf') format('truetype');
+    font-weight: normal; 
+    font-style: normal;
+}
 
 * {
     font-family: Arial, Verdana, sans-serif, Audiowide;
@@ -35,7 +43,7 @@
 
 #logo h1{
     font-size: 40px;
-    font-family: Audiowide, GungsuhChe, cursive;
+    font-family: GSC, cursive;
     padding: 1.5em 0px 0px 0px;
     margin: 0px;
     color: black;
@@ -43,7 +51,7 @@
 
 #logo h2{
     font-size: 20px;
-    font-family: Arial;
+    font-family: GSC;
     color: black;
     padding: 10px;
     margin: 0px
@@ -131,6 +139,27 @@ footer p{
 }
 
 /** 글 상자 **/
+
+.about_article {
+    text-align: left;
+    height: 1000px;
+    background-image: url("img/note.png");
+    margin-top:20px;
+}
+.about_article h1{
+    color:black;
+    font-family: NanumBrushScript;
+    padding-top: 200px;
+    font-size: 50px;
+}
+
+.about_article p{
+    font-size: 35px;
+    margin-top: 40px;
+    line-height: 48px;
+    color:black;
+    font-family: NanumBrushScript;
+}
 
 .article {
     text-align: left;
