@@ -2,7 +2,7 @@
 @font-face{
     font-family: Audiowide;
     src: url('fonts/Audiowide-Regular.ttf') format('truetype'),
-        url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+    url(https://fonts.gstatic.com/s/audiowide/v9/l7gdbjpo0cum0ckerWCdmA_OIxo.woff2) format('woff2');
     font-weight: normal; 
     font-style: normal;
 }
@@ -10,7 +10,7 @@
 @font-face{
     font-family: NanumBrushScript;
     src: url('fonts/NanumBrushScript-Regular.ttf') format('truetype'),
-    url('https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap');
+    url(https://fonts.gstatic.com/s/nanumbrushscript/v17/wXK2E2wfpokopxzthSqPbcR5_gVaxazyi8h91FzOgw1p2ltl6Y9TO0Bmgx_e.0.woff2) format('woff2');
     font-weight: normal; 
     font-style: normal;
 }
@@ -131,7 +131,7 @@ footer p{
 }
 
 .cat_slide img{
-    height: 480px;
+    /*height: 480px;*/
 }
 
 .cat_slide img:hover{
