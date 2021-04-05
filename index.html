@@ -24,25 +24,32 @@
         </header>
 
         <!-- 고양이 그림 슬라이드 부분 -->
-        <div class="grid_2 cat_slide">
-            <img src="img/arrows/arrow_left.png"/>
+        <div class ="grid_12 first">
+            <h2>화살표를 눌러보세요!</h2>    
         </div>
-        <div class="grid_8 cat_photo">
-            <img src='img/cats/2.jpg'/>
+        <div class="grid_2 left_arrow">
+            <img id="left" src="img/arrows/arrow_left.png"/>
         </div>
-        <div class="grid_2 cat_slide">
-            <img src="img/arrows/arrow_right.png"/>
+        <div id="t_pic" class="grid_8 cat_photo">
+            <img id="pic" src='img/cats/2.jpg'/>
         </div>
-        <div class="grid_12 article">
-            <h2 id="pic_name">한 여름 풀밭의 뽀또</h2>
-            <p id="pic_log">
-                이 녀석의 이름은 뽀또. 학교에서 모르는 사람이 없을 정도로 인기스타이다.<br>
-                아마 치즈맛 뽀또의 색깔을 닮은 치즈냥이라 그런 듯 하다.<br>
-                요 녀석은 고고쉼이라는 고려대 고양이 동아리의 사랑을 듬뿍 받아 그런지<br>
-                생각보다 뚱냥이다...<br>
-                귀엽다고 마구 츄르를 주지 않도록 하자.
+        <div class="grid_2 right_arrow">
+            <img id="right" src="img/arrows/arrow_right.png"/>
+        </div>
 
-            </p>
+        <!-- 블로그 체크 리스트-->
+        <div class="grid_12 article">
+        <p>
+            블로그 제작 계획 <br>
+            현재: 30% ■■■□□□□□□□
+            <ul>
+                <li class="done">Home 전체 제작</li>
+                <li class="yet">cat event 제작</li>
+                <li class="yet">Profile 제작</li>
+                <li class="yet">Project 제작</li>
+                <li class="yet">Contact 제작</li>
+            </ul>
+        </p>
         </div>
         <footer class="grid_12">
             <p>Made by 김동은</p>
@@ -52,6 +59,7 @@
     <script src="js/welcome-time.js"></script>
     <script src="js/footer-write.js"></script>
     <script src="js/title-insert.js"></script>
+    <script src="js/arrow-click-event.js"></script>
     
     <!--점검중-->
     <!--script src="js/warning.js"></script--> 

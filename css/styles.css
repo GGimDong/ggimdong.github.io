@@ -100,29 +100,26 @@ footer p{
 }
 
 /***  화살표  ***/
-/*
-.left_arrow{
-    background-image: url('img/arrow_left.png');
-}
-
-.right_arrow{
-    background-image: url('img/arrow_right.png');
-}
 
 .left_arrow, .right_arrow{
     margin-top: 20px;
-    background-color: #f8f9fa;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 480px;
+    opacity: 0.8;
 }
 
 .left_arrow:hover, .right_arrow:hover {
-    opacity: 0.8;
+    opacity: 1;
 }
-*/
+
 /*cat_slide*/
+
+.first{
+    height: 80px;
+    width: 100px;
+    background-image: url("img/—Pngtree—underline\ doodle\ collection_5402516.png");
+    background-size: 70%;
+    background-position: 70px -65px;
+    clip: rect(0px, 100px, 100px, 0px);
+}
 
 .cat_photo img{
     background-color: white;
@@ -172,6 +169,8 @@ footer p{
     height: 300px;
     background-color:#efefef;
     background-image: url("img/—Pngtree—memphis\ border\ simple\ and\ cute_4021115.png");
+    background-position:  25px -25px;
+
     background-repeat: no-repeat;
     background-size: cover;
     margin-top:20px;
