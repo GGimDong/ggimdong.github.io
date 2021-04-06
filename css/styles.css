@@ -32,6 +32,19 @@
     text-align: right;
 }
 
+/* Main page */
+
+.main {
+    padding: 0px;
+    margin: 0px;
+    background-image: url('img/main_bg_dinosaur_3.jpg');
+    
+}
+
+.sub_main{
+    background-color: #efefef;
+}
+
 /* 상단 */
 
 #logo {
@@ -168,7 +181,7 @@ footer p{
     text-align: left;
     height: 300px;
     background-color:#efefef;
-    background-image: url("img/—Pngtree—memphis\ border\ simple\ and\ cute_4021115.png");
+    /*background-image: url("img/—Pngtree—memphis\ border\ simple\ and\ cute_4021115.png");*/
     background-position:  25px -25px;
 
     background-repeat: no-repeat;
