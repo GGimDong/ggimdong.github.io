@@ -1,21 +1,5 @@
 /* 폰트 추가 */
 @font-face{
-    font-family: Audiowide;
-    src: url('fonts/Audiowide-Regular.ttf') format('truetype'),
-    url(https://fonts.gstatic.com/s/audiowide/v9/l7gdbjpo0cum0ckerWCdmA_OIxo.woff2) format('woff2');
-    font-weight: normal; 
-    font-style: normal;
-}
-
-@font-face{
-    font-family: NanumBrushScript;
-    src: url('fonts/NanumBrushScript-Regular.ttf') format('truetype'),
-    url(https://fonts.gstatic.com/s/nanumbrushscript/v17/wXK2E2wfpokopxzthSqPbcR5_gVaxazyi8h91FzOgw1p2ltl6Y9TO0Bmgx_e.0.woff2) format('woff2');
-    font-weight: normal; 
-    font-style: normal;
-}
-
-@font-face{
     font-family: GSC;
     src: url('fonts/ChosunCentennial_ttf.ttf') format('truetype');
     font-weight: normal; 
@@ -23,8 +7,7 @@
 }
 
 * {
-    font-family: Arial, Verdana, sans-serif, Audiowide;
-    color: #665544;
+    font-family: Arial, Verdana, sans-serif;
     text-align: center;
 }
 
@@ -37,27 +20,22 @@
 .main {
     padding: 0px;
     margin: 0px;
-    background-image: url('img/coupon/dbk.jpeg');
-}
-
-.sub_main{
-    background-color: white;
 }
 
 /* 상단 */
 
 #logo {
-    background-color:blue;
+    padding: 2em;
+    background-color:white;
     background-image: url('img/coupon/header.png');
     background-size: contain;
-    height:160px;
+    background-position: center;
+    background-repeat:no-repeat;
 }
 
 #logo h1{
     font-size: 40px;
     font-family: GSC, cursive;
-    padding: 1.5em 0px 0px 0px;
-    margin: 0px;
     color: black;
 }
 
@@ -83,19 +61,22 @@ nav{
 nav a{
     font-size: 1em;
     padding: 0px 0.8em;
-    font-family: Audiowide;
     text-decoration: none;
     color: black;
 }
 
-#current, nav a:hover{
+#current{
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+nav a:hover{
     color: red;
 }
 
 /* 하단바 */
 
 footer{
-    margin-top:20px;
     background-color: black !important;
 }
 
@@ -106,139 +87,47 @@ footer p{
     padding-bottom: 40px;
 }
 
-#my_pic img{
-    border-radius:70%;
-    overflow: hidden;
-}
-
-/***  화살표  ***/
-
-.left_arrow, .right_arrow{
-    margin-top: 20px;
-    opacity: 0.8;
-}
-
-.left_arrow:hover, .right_arrow:hover {
-    opacity: 1;
-}
-
-/*cat_slide*/
-
-.first{
-    height: 80px;
-    width: 100px;
-    background-image: url("img/—Pngtree—underline\ doodle\ collection_5402516.png");
-    background-size: 70%;
-    background-position: 70px -65px;
-    clip: rect(0px, 100px, 100px, 0px);
-}
-
-.cat_photo img{
-    background-color: white;
-    margin-top:20px;
-    height: 300px;
-}
-
-.cat_slide{
-    background-color: white;
-    margin-top:20px;
-    height: 300px;
-}
-
-.cat_slide img{
-    height: 300px;
-}
-
-.cat_slide img:hover{
-    opacity: 0.8;
-}
-
 /** 글 상자 **/
-
 .about_article {
+    padding: 10px;
+    margin: 10px;
     text-align: left;
-    height: 1000px;
-    background-image: url("img/note.png");
-    margin-top:20px;
+    border: solid;
 }
 .about_article h1{
     color:black;
-    font-family: NanumBrushScript;
-    padding-top: 200px;
+    padding: 10px;
     font-size: 50px;
 }
 
+.about_article h2{
+    text-align: left;
+}
+
+.about_article h3{
+    text-align: left;
+}
+
 .about_article p{
-    font-size: 35px;
-    margin-top: 40px;
-    line-height: 48px;
     color:black;
-    font-family: NanumBrushScript;
-}
-
-.article {
-    text-align: left;
-    height: 300px;
-    background-color:#efefef;
-    /*background-image: url("img/—Pngtree—memphis\ border\ simple\ and\ cute_4021115.png");*/
-    background-position:  25px -25px;
-
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin-top:20px;
-}
-
-.article p{
-    padding: 10px 40px;
-    font-size: 1.5em;
     text-align: left;
 }
+
+table {
+    width: 100%;
+    border: 1px solid #444444;
+    padding: 10px;
+    margin: 30px 0px;
+}
+
+table th{
+    font-weight: bold;
+    padding: 10px;
+}
+
+
 
 li {
     display: inline;
     padding: 5px;
 }
-
-img{
-    height: 300px;
-}
-
-/* Click event example - note style */
-#note {
-    color: #fff;
-    background-color: #000;
-    opacity: 0.9;
-    box-shadow: -3px 3px 6px #000;
-    padding: 1em 1em 2em 1em;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 1em;
-    left: 0;}
-  
-  #note .message {
-    background: rgb(255, 255, 255);
-    background: rgba(255, 255, 255, 1);
-    position: relative;
-    text-align: center;
-    top: 1px;
-    color: #d7666b;
-    padding: 20px;
-    margin: 30px;
-    border: 1px solid #d7666b;}
-  
-  #note h2 {
-    color: #d7666b;
-    padding-top: 20px;
-    padding-bottom: 20px;}
-  
-  #note a {
-    text-decoration: none;
-    color: #fff;}
-  
-  #note .header {
-    text-align: right;
-    background-color: #000;
-    border: none;
-    padding: 0px 0px 0px 10px;}
-  
