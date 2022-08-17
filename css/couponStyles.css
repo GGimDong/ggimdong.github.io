@@ -74,6 +74,96 @@ nav a:hover{
     color: red;
 }
 
+/* 떡볶이 사진용 */
+* {
+    box-sizing: border-box;
+}
+
+
+/* Container needed to position the overlay. Adjust the width as needed */
+.container {
+    margin:auto;
+    object-position: 30px;
+    position: relative;
+    width: 50%;
+    max-width: 400px;
+}
+
+/* Make the image to responsive */
+.image {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+  
+  /* The overlay effect - lays on top of the container and over the image */
+.overlay {
+    position: absolute;
+    bottom: 0;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.5); /* Black see-through */
+    color: #f1f1f1;
+    width: 100%;
+    transition: .5s ease;
+    opacity:0;
+    color: white;
+    font-size: 20px;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  /* When you mouse over the container, fade in the overlay title */
+  .container:hover .overlay {
+    opacity: 1;
+  }
+
+  /* 호버 텍스트 */
+  .hovertext {
+    position: relative;
+    border-bottom: 1px dotted black;
+  }
+  
+  .hovertext:before {
+    content: attr(data-hover);
+    visibility: hidden;
+    opacity: 0;
+    width: 140px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px 0;
+    transition: opacity 1s ease-in-out;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 110%;
+  }
+  
+  .hovertext:hover:before {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .hovertext:before {
+    content: attr(data-hover);
+    visibility: hidden;
+    opacity: 0;
+    width: max-content;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px 5px;
+    transition: opacity 1s ease-in-out;
+  
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 110%;
+  }
+  
+
 /* 하단바 */
 
 footer{
@@ -94,6 +184,7 @@ footer p{
     text-align: left;
     border: solid;
 }
+
 .about_article h1{
     color:black;
     padding: 10px;
@@ -101,6 +192,7 @@ footer p{
 }
 
 .about_article h2{
+    margin: 1em;
     text-align: left;
 }
 
@@ -109,6 +201,9 @@ footer p{
 }
 
 .about_article p{
+    text-indent: 0.5em;
+    line-height: 1.5em;
+    margin: 1em 3em;
     color:black;
     text-align: left;
 }
