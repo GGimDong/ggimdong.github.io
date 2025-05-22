@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <title>부루마블 보드</title>
+  <title>부루마블 보드 (6칸/면)</title>
   <style>
     canvas {
       background-color: #f0f0f0;
@@ -13,43 +13,49 @@
   </style>
 </head>
 <body>
-  <canvas id="board" width="800" height="800"></canvas>
+  <canvas id="board" width="720" height="720"></canvas>
 
   <script>
     const canvas = document.getElementById('board');
     const ctx = canvas.getContext('2d');
 
-    const boardSize = 800;
-    const cellSize = 80;
-    const cellsPerSide = 10;
+    const boardSize = 720;
+    const cellCountPerSide = 6;
+    const cellSize = boardSize / (cellCountPerSide + 2); // +2는 양쪽 모서리 칸 포함
 
-    // 외곽 라인 그리기
     function drawBoard() {
-      // 하단 라인 (왼→오)
-      for (let i = 0; i < cellsPerSide; i++) {
-        drawCell(i * cellSize, boardSize - cellSize, cellSize, cellSize, `B${i}`);
+      // 아래쪽 (왼 → 오)
+      for (let i = 0; i < cellCountPerSide; i++) {
+        drawCell((i + 1) * cellSize, boardSize - cellSize, cellSize, cellSize, `B${i}`);
       }
 
-      // 오른쪽 라인 (하→상)
-      for (let i = 1; i < cellsPerSide; i++) {
-        drawCell(boardSize - cellSize, boardSize - cellSize - i * cellSize, cellSize, cellSize, `R${i}`);
+      // 오른쪽 (아래 → 위)
+      for (let i = 0; i < cellCountPerSide; i++) {
+        drawCell(boardSize - cellSize, boardSize - (i + 2) * cellSize, cellSize, cellSize, `R${i}`);
       }
 
-      // 상단 라인 (오→왼)
-      for (let i = 1; i < cellsPerSide; i++) {
-        drawCell(boardSize - cellSize - i * cellSize, 0, cellSize, cellSize, `T${i}`);
+      // 위쪽 (오 → 왼)
+      for (let i = 0; i < cellCountPerSide; i++) {
+        drawCell(boardSize - (i + 2) * cellSize, 0, cellSize, cellSize, `T${i}`);
       }
 
-      // 왼쪽 라인 (상→하)
-      for (let i = 1; i < cellsPerSide - 1; i++) {
-        drawCell(0, i * cellSize, cellSize, cellSize, `L${i}`);
+      // 왼쪽 (위 → 아래)
+      for (let i = 0; i < cellCountPerSide; i++) {
+        drawCell(0, (i + 1) * cellSize, cellSize, cellSize, `L${i}`);
       }
 
-      // 가운데 로고 공간
+      drawCorners();
       drawCenter();
     }
 
-    // 셀 그리기
+    // 각 모서리 (출발, 무인도 등)
+    function drawCorners() {
+      drawCell(0, boardSize - cellSize, cellSize, cellSize, "출발");
+      drawCell(boardSize - cellSize, boardSize - cellSize, cellSize, cellSize, "무인도");
+      drawCell(boardSize - cellSize, 0, cellSize, cellSize, "보너스");
+      drawCell(0, 0, cellSize, cellSize, "감옥");
+    }
+
     function drawCell(x, y, w, h, label) {
       ctx.strokeStyle = '#000';
       ctx.strokeRect(x, y, w, h);
@@ -62,7 +68,6 @@
       ctx.fillText(label, x + 5, y + 15);
     }
 
-    // 중앙 공간
     function drawCenter() {
       const margin = cellSize;
       const size = boardSize - margin * 2;
@@ -73,7 +78,7 @@
       ctx.strokeRect(margin, margin, size, size);
 
       ctx.fillStyle = '#000';
-      ctx.font = '24px sans-serif';
+      ctx.font = '28px sans-serif';
       ctx.textAlign = 'center';
       ctx.fillText('부루마블', boardSize / 2, boardSize / 2);
     }
