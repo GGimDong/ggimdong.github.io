@@ -42,26 +42,28 @@
     const boardSize = 600;
     const cellCountPerSide = 4;
     const cellSize = boardSize / (cellCountPerSide + 2); // +2는 모서리
+    var first_line = [ '서울/경기', '강원도', '충청북도\n(대전 포함)', '충청남도\n(대전 포함)' ];
+    var second_line = [ '전라남도\n(광주 포함)', '경상북도\n(경주, 대구 포함)', '경상남도\n(부산 포함)', '제주도' ];
 
     function drawBoard() {
       // 아래쪽 (왼→오)
       for (let i = 0; i < cellCountPerSide; i++) {
-        drawCell((i + 1) * cellSize, boardSize - cellSize, cellSize, cellSize, `B${i}`);
+        drawCell((i + 1) * cellSize, boardSize - cellSize, cellSize, cellSize, first_line[i]);
       }
 
       // 오른쪽 (아래→위)
       for (let i = 0; i < cellCountPerSide; i++) {
-        drawCell(boardSize - cellSize, boardSize - (i + 2) * cellSize, cellSize, cellSize, `R${i}`);
+        drawCell(boardSize - cellSize, boardSize - (i + 2) * cellSize, cellSize, cellSize, second_line[i]);
       }
 
       // 위쪽 (오→왼)
       for (let i = 0; i < cellCountPerSide; i++) {
-        drawCell(boardSize - (i + 2) * cellSize, 0, cellSize, cellSize, `T${i}`);
+        drawCell(boardSize - (i + 2) * cellSize, 0, cellSize, cellSize, first_line[i]);
       }
 
       // 왼쪽 (위→아래)
       for (let i = 0; i < cellCountPerSide; i++) {
-        drawCell(0, (i + 1) * cellSize, cellSize, cellSize, `L${i}`);
+        drawCell(0, (i + 1) * cellSize, cellSize, cellSize, second_line[i]);
       }
 
       drawCorners();
@@ -69,22 +71,34 @@
     }
 
     function drawCorners() {
-      drawCell(0, boardSize - cellSize, cellSize, cellSize, "출발");
-      drawCell(boardSize - cellSize, boardSize - cellSize, cellSize, cellSize, "무인도");
-      drawCell(boardSize - cellSize, 0, cellSize, cellSize, "보너스");
-      drawCell(0, 0, cellSize, cellSize, "감옥");
+      drawCell(0, boardSize - cellSize, cellSize, cellSize, "Start\n집콕");
+      drawCell(boardSize - cellSize, boardSize - cellSize, cellSize, cellSize, "전라북도");
+      drawCell(boardSize - cellSize, 0, cellSize, cellSize, "집콕");
+      drawCell(0, 0, cellSize, cellSize, "전라북도");
     }
 
     function drawCell(x, y, w, h, label) {
       ctx.strokeStyle = '#000';
-      ctx.strokeRect(x, y, w, h);
-
-      ctx.fillStyle = '#fff';
+      
+      // 제주도일 경우 배경색을 옅은 푸른색으로 설정
+      if (label.includes('제주도')) {
+        ctx.fillStyle = '#add8e6'; // 옅은 푸른색
+      } else if (label.includes('Start')) {
+        ctx.fillStyle = '#ffb6c1'; // 옅은 핑크색
+      } else {
+        ctx.fillStyle = '#fff'; // 기본 배경색
+      }
       ctx.fillRect(x + 1, y + 1, w - 2, h - 2);
+      ctx.strokeRect(x, y, w, h);
 
       ctx.fillStyle = '#000';
       ctx.font = '12px sans-serif';
-      ctx.fillText(label, x + 5, y + 15);
+
+      // 개행 처리
+      const lines = label.split('\n');
+      lines.forEach((line, index) => {
+        ctx.fillText(line, x + 5, y + 15 + index * 15); // 각 줄마다 y 좌표를 조정
+      });
     }
 
     function drawCenter() {
@@ -105,7 +119,7 @@
 
     function rollDice() {
       const result = Math.floor(Math.random() * 6) + 1;
-      document.getElementById('dice-result').textContent = `🎲 주사위: ${result}`;
+      document.getElementById('dice-result').textContent = `주사위: ${result}`;
     }
 
     drawBoard();
