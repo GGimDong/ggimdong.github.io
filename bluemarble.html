@@ -2,44 +2,64 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <title>부루마블 보드 (6칸/면)</title>
+  <title>햄찌마블</title>
   <style>
     canvas {
       background-color: #f0f0f0;
       display: block;
-      margin: 0 auto;
+      margin: 20px auto;
       border: 2px solid #333;
+    }
+    .controls {
+      text-align: center;
+      font-family: sans-serif;
+    }
+    #dice-result {
+      margin-top: 10px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    button {
+      font-size: 16px;
+      padding: 8px 16px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
-  <canvas id="board" width="720" height="720"></canvas>
+
+  <canvas id="board" width="600" height="600"></canvas>
+
+  <div class="controls">
+    <button onclick="rollDice()">주사위 굴리기</button>
+    <div id="dice-result"></div>
+  </div>
 
   <script>
     const canvas = document.getElementById('board');
     const ctx = canvas.getContext('2d');
 
-    const boardSize = 720;
-    const cellCountPerSide = 6;
-    const cellSize = boardSize / (cellCountPerSide + 2); // +2는 양쪽 모서리 칸 포함
+    const boardSize = 600;
+    const cellCountPerSide = 4;
+    const cellSize = boardSize / (cellCountPerSide + 2); // +2는 모서리
 
     function drawBoard() {
-      // 아래쪽 (왼 → 오)
+      // 아래쪽 (왼→오)
       for (let i = 0; i < cellCountPerSide; i++) {
         drawCell((i + 1) * cellSize, boardSize - cellSize, cellSize, cellSize, `B${i}`);
       }
 
-      // 오른쪽 (아래 → 위)
+      // 오른쪽 (아래→위)
       for (let i = 0; i < cellCountPerSide; i++) {
         drawCell(boardSize - cellSize, boardSize - (i + 2) * cellSize, cellSize, cellSize, `R${i}`);
       }
 
-      // 위쪽 (오 → 왼)
+      // 위쪽 (오→왼)
       for (let i = 0; i < cellCountPerSide; i++) {
         drawCell(boardSize - (i + 2) * cellSize, 0, cellSize, cellSize, `T${i}`);
       }
 
-      // 왼쪽 (위 → 아래)
+      // 왼쪽 (위→아래)
       for (let i = 0; i < cellCountPerSide; i++) {
         drawCell(0, (i + 1) * cellSize, cellSize, cellSize, `L${i}`);
       }
@@ -48,7 +68,6 @@
       drawCenter();
     }
 
-    // 각 모서리 (출발, 무인도 등)
     function drawCorners() {
       drawCell(0, boardSize - cellSize, cellSize, cellSize, "출발");
       drawCell(boardSize - cellSize, boardSize - cellSize, cellSize, cellSize, "무인도");
@@ -71,16 +90,22 @@
     function drawCenter() {
       const margin = cellSize;
       const size = boardSize - margin * 2;
-      ctx.fillStyle = '#e0e0e0';
+      ctx.fillStyle = '#ffe';
       ctx.fillRect(margin, margin, size, size);
 
       ctx.strokeStyle = '#000';
       ctx.strokeRect(margin, margin, size, size);
 
-      ctx.fillStyle = '#000';
-      ctx.font = '28px sans-serif';
+      ctx.fillStyle = '#333';
+      ctx.font = '32px sans-serif';
       ctx.textAlign = 'center';
-      ctx.fillText('부루마블', boardSize / 2, boardSize / 2);
+      ctx.textBaseline = 'middle';
+      ctx.fillText('햄찌마블', boardSize / 2, boardSize / 2);
+    }
+
+    function rollDice() {
+      const result = Math.floor(Math.random() * 6) + 1;
+      document.getElementById('dice-result').textContent = `🎲 주사위: ${result}`;
     }
 
     drawBoard();
