@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>부루마블 보드</title>
+  <style>
+    canvas {
+      background-color: #f0f0f0;
+      display: block;
+      margin: 0 auto;
+      border: 2px solid #333;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="board" width="800" height="800"></canvas>
+
+  <script>
+    const canvas = document.getElementById('board');
+    const ctx = canvas.getContext('2d');
+
+    const boardSize = 800;
+    const cellSize = 80;
+    const cellsPerSide = 10;
+
+    // 외곽 라인 그리기
+    function drawBoard() {
+      // 하단 라인 (왼→오)
+      for (let i = 0; i < cellsPerSide; i++) {
+        drawCell(i * cellSize, boardSize - cellSize, cellSize, cellSize, `B${i}`);
+      }
+
+      // 오른쪽 라인 (하→상)
+      for (let i = 1; i < cellsPerSide; i++) {
+        drawCell(boardSize - cellSize, boardSize - cellSize - i * cellSize, cellSize, cellSize, `R${i}`);
+      }
+
+      // 상단 라인 (오→왼)
+      for (let i = 1; i < cellsPerSide; i++) {
+        drawCell(boardSize - cellSize - i * cellSize, 0, cellSize, cellSize, `T${i}`);
+      }
+
+      // 왼쪽 라인 (상→하)
+      for (let i = 1; i < cellsPerSide - 1; i++) {
+        drawCell(0, i * cellSize, cellSize, cellSize, `L${i}`);
+      }
+
+      // 가운데 로고 공간
+      drawCenter();
+    }
+
+    // 셀 그리기
+    function drawCell(x, y, w, h, label) {
+      ctx.strokeStyle = '#000';
+      ctx.strokeRect(x, y, w, h);
+
+      ctx.fillStyle = '#fff';
+      ctx.fillRect(x + 1, y + 1, w - 2, h - 2);
+
+      ctx.fillStyle = '#000';
+      ctx.font = '12px sans-serif';
+      ctx.fillText(label, x + 5, y + 15);
+    }
+
+    // 중앙 공간
+    function drawCenter() {
+      const margin = cellSize;
+      const size = boardSize - margin * 2;
+      ctx.fillStyle = '#e0e0e0';
+      ctx.fillRect(margin, margin, size, size);
+
+      ctx.strokeStyle = '#000';
+      ctx.strokeRect(margin, margin, size, size);
+
+      ctx.fillStyle = '#000';
+      ctx.font = '24px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('부루마블', boardSize / 2, boardSize / 2);
+    }
+
+    drawBoard();
+  </script>
+</body>
+</html>
