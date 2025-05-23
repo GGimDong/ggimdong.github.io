@@ -84,28 +84,28 @@
     }
 
     function drawCell(x, y, w, h, label, isStart = false) {
-      ctx.strokeStyle = '#000';
-      
-      // Start 셀일 경우 배경색을 옅은 핑크색으로 설정
-      if (isStart) {
-        ctx.fillStyle = '#ffb6c1'; // 옅은 핑크색
-      } else if (label.includes('제주도')) {
-        ctx.fillStyle = '#add8e6'; // 제주도는 옅은 파란색
-      } else {
-        ctx.fillStyle = '#fff'; // 기본 배경색
-      }
-      
-      ctx.fillRect(x + 1, y + 1, w - 2, h - 2);
-      ctx.strokeRect(x, y, w, h);
+        ctx.strokeStyle = '#000';
+        
+        if (isStart) {
+            ctx.fillStyle = '#ffb6c1'; // 옅은 핑크색
+        } else if (label.includes('제주도')) {
+            ctx.fillStyle = '#add8e6'; // 제주도는 옅은 파란색
+        } else {
+            ctx.fillStyle = '#fff'; // 기본 배경색
+        }
+        
+        ctx.fillRect(x + 1, y + 1, w - 2, h - 2);
+        ctx.strokeRect(x, y, w, h);
 
-      ctx.fillStyle = '#000';
-      ctx.font = '12px sans-serif';
+        ctx.fillStyle = '#000';
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'center'; // 텍스트 중앙 정렬
+        ctx.textBaseline = 'middle'; // 텍스트 수직 중앙 정렬
 
-      // 개행 처리
-      const lines = label.split('\n');
-      lines.forEach((line, index) => {
-        ctx.fillText(line, x + 5, y + 15 + index * 15); // 각 줄마다 y 좌표를 조정
-      });
+        const lines = label.split('\n');
+        lines.forEach((line, index) => {
+            ctx.fillText(line, x + w / 2, y + h / 2 + (index - (lines.length - 1) / 2) * 15); // 중앙에 위치
+        });
     }
 
     function drawCenter() {
@@ -125,18 +125,34 @@
     }
 
     function drawPlayerPiece(position) {
-      const pieceX = getPieceX(position);
-      const pieceY = getPieceY(position);
-      const pieceRadius = 10; // 말의 반지름
+      const pieceX = getPieceX(position) - 45;
+      const pieceY = getPieceY(position) + 25;
+      const pieceWidth = 40; // 사각형의 너비
+      const pieceHeight = 20; // 사각형의 높이
+      const cornerRadius = 10; // 둥근 모서리 반지름
 
       ctx.fillStyle = '#ff6347'; // 토마토 색상
       ctx.beginPath();
-      ctx.arc(pieceX, pieceY, pieceRadius, 0, Math.PI * 2); // 원 그리기
+      ctx.moveTo(pieceX + cornerRadius, pieceY);
+      ctx.lineTo(pieceX + pieceWidth - cornerRadius, pieceY);
+      ctx.quadraticCurveTo(pieceX + pieceWidth, pieceY, pieceX + pieceWidth, pieceY + cornerRadius);
+      ctx.lineTo(pieceX + pieceWidth, pieceY + pieceHeight - cornerRadius);
+      ctx.quadraticCurveTo(pieceX + pieceWidth, pieceY + pieceHeight, pieceX + pieceWidth - cornerRadius, pieceY + pieceHeight);
+      ctx.lineTo(pieceX + cornerRadius, pieceY + pieceHeight);
+      ctx.quadraticCurveTo(pieceX, pieceY + pieceHeight, pieceX, pieceY + pieceHeight - cornerRadius);
+      ctx.lineTo(pieceX, pieceY + cornerRadius);
+      ctx.quadraticCurveTo(pieceX, pieceY, pieceX + cornerRadius, pieceY);
+      ctx.closePath();
       ctx.fill();
       ctx.strokeStyle = '#000';
       ctx.stroke(); // 테두리 그리기
-      // Debug 로그
-      // document.getElementById('position').textContent = `x: ${pieceX} y: ${pieceY}, num: ${position}`;
+
+      // "요기"라는 글씨 추가
+      ctx.fillStyle = '#fff'; // 글씨 색상
+      ctx.font = '12px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('요기', pieceX + pieceWidth / 2, pieceY + pieceHeight / 2); // 중앙에 위치
     }
 
     function getPieceX(position) {
@@ -166,7 +182,7 @@
     function rollDice() {
       const result = Math.floor(Math.random() * 6) + 1;
       document.getElementById('dice-result').textContent = `주사위: ${result}`;
-      movePlayer(result);
+      //movePlayer(result);
     }
 
     function movePlayer(steps) {
@@ -174,7 +190,7 @@
       ctx.clearRect(0, 0, boardSize, boardSize); // 보드판 지우기
       drawBoard(); // 보드판 다시 그리기
     }
-
+    playerPosition = 2; // 강원도에서 시작!
     drawBoard();
   </script>
 </body>
