@@ -75,6 +75,7 @@
       drawCorners();
       drawCenter();
       drawPlayerPiece(playerPosition); // 플레이어 말을 그리는 함수 호출
+      drawHouses();
     }
 
     function drawCorners() {
@@ -154,6 +155,29 @@
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.fillText('요기', pieceX + pieceWidth / 2, pieceY + pieceHeight / 2); // 중앙에 위치
+    }
+
+    function drawHousePiece(position, num = 0) {
+      const pieceX = getPieceX(position) - 45 + 25 * num; // 집의 X 위치
+      const pieceY = getPieceY(position) - 45; // 집의 Y 위치
+      const houseWidth = 20; // 집의 너비
+      const houseHeight = 20; // 집의 높
+
+      // 집 그리기
+      ctx.fillStyle = '#8B4513'; // 집 색상 (갈색)
+      ctx.fillRect(pieceX, pieceY, houseWidth, houseHeight); // 집 본체
+
+      // 지붕 그리기
+      ctx.beginPath();
+      ctx.moveTo(pieceX, pieceY); // 왼쪽 아래
+      ctx.lineTo(pieceX + houseWidth / 2, pieceY - 10); // 지붕의 꼭대기
+      ctx.lineTo(pieceX + houseWidth, pieceY); // 오른쪽 아래
+      ctx.closePath();
+      ctx.fill(); // 지붕 그리기
+    }
+    
+    function drawHouses() {
+        drawHousePiece(2);
     }
 
     function getPieceX(position) {
