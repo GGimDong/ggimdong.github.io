@@ -1,2 +1,3 @@
-# 개발자 김동은 블로그
-웹 주소: https://ggimdong.github.io/
+# Dongeun Kim
+Web: https://ggimdong.github.io/
+해당 repo는 갖다버림
